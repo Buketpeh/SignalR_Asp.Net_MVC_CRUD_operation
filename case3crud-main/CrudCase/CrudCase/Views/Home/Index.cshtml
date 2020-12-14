@@ -1,0 +1,64 @@
+﻿@using CrudCase.Models
+@model List<Arac>
+@{ ViewBag.Title = "Home Page"; }
+<div class="card shadow mb-4" id="myTable">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h1>Araçlar</h1>
+    </div>
+    <div style="padding-bottom: 15px; padding-top:15px;">
+        <a href="/Home/Create" class="btn btn-default ">Yeni Ekle</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered dataTable"  width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column descending" style="width: 62px;" aria-sort="ascending">Araç no</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 50px;">Marka</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Model</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 68px;">Fiyat</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Plaka</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 58px;">Yaş</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 58px;">Güncelle</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 58px;">Sil</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (Arac item in Model)
+                                {
+                    <tr role="row" class="odd">
+                        <td>@item.aracno</td>
+                        <td>@item.marka</td>
+                        <td>@item.model</td>
+                        <td>@item.fiyat</td>
+                        <td>@item.plaka</td>
+                        <td>@item.yas</td>
+                        <td> @Html.ActionLink("Güncelleme", "Update", new { id = item.aracno }) </td>
+                        <td> @Html.ActionLink("Sil", "Delete", new { id = item.aracno }) </td>
+
+
+                    </tr>}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>--
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+<script src="../signalr/hubs"></script>
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/App.js"></script>
